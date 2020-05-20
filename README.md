@@ -21,7 +21,9 @@ _8.-Adding webpack-dev-server to the project._
 _9.-Webpack to create the HTML._
 
 
-_Dynamic JS Code with modules through Webpack._
+
+_- Dynamic JS Code with modules through Webpack._
+
 
 
 ## Settings 🔧
@@ -31,43 +33,43 @@ _Installating **Node.js** with NPM (https://nodejs.org/es/)._
 
 _You must use this scripts to create the dependecies:_
 
-* **npm init** - _(To create a package.json file.)_
+* **npm init**  _(To create a package.json file.)_
 
 
 _You must use this scripts to create the dependecies:_
 
-* **npm install --save-dev** - _(To create a webpack dependency.)_
+* **npm install --save-dev**  _(To create a webpack dependency.)_
 
-* **npm install --save-dev webpack-cli** - _(To create a command line interface webpack dependency.)_
+* **npm install --save-dev webpack-cli**  _(To create a command line interface webpack dependency.)_
 
-* **npm install --save-dev @babel/cli @babel/core @babel/preset-env @babel/register babel-loader** - <br />
+* **npm install --save-dev @babel/cli @babel/core @babel/preset-env @babel/register babel-loader**  <br />
  _(To create a Babel dependencies.)_
 
-* **npm install --save-dev style-loader css-loader** - _(To create a CSS dependencies.)_
+* **npm install --save-dev style-loader css-loader**  _(To create a CSS dependencies.)_
 
-* **npm install --save-dev sass-loader** - _(To create a Sass dependency.)_
+* **npm install --save-dev sass-loader**  _(To create a Sass dependency.)_
 
-* **npm install --save-dev node-sass** - _(To create a Sass dependency.)_
+* **npm install --save-dev node-sass**  _(To create a Sass dependency.)_
 
-* **npm install -g --unsafe-perm node-sass --save** - _(To create a Sass dependency the global way.)_
+* **npm install -g --unsafe-perm node-sass --save**  _(To create a Sass dependency the global way.)_
 
-* **npm install --save-dev webpack-dev-server** - _(To create a Server dependency.)_
+* **npm install --save-dev webpack-dev-server**  _(To create a Server dependency.)_
 
-* **npm install --save-dev html-webpack-plugin** - _(To create the HTML plugin dependency, which <br />
+* **npm install --save-dev html-webpack-plugin**  _(To create the HTML plugin dependency, which <br />
   automatically puts the HTML files inside the packages folder)_
 
-**Nota:** <br />
+**Note:** <br />
 In Linux it is necessary to sometimes putting the term **sudo** in front to  the script to authenticate yourself, <br />
 and thus be able to install the dependencies.
 
 
 _You must use this scripts to run the project:._
 
-* **npm install** - _(To install the dependencies that have been created in the package.json file.)_
+* **npm install**  _(To install the dependencies that have been created in the package.json file.)_
 
-* **npm run build** - _(To create or updating the Webpack bundles.)_
+* **npm run build**  _(To create or updating the Webpack bundles.)_
 
-* **npm run dev** - _(To run the server. To exit the server press Ctrl+C.)_
+* **npm run dev**  _(To run the server. To exit the server press Ctrl+C.)_
 
 
 ## Built with 🛠️
@@ -84,7 +86,7 @@ _The tools used to create the project have been the following:_
 
 ## Authors ✒️
 
-_The project is from the Udemy course(https://www.udemy.com/course/javascript-moderno-guia-definitiva-construye-10-proyectos/)_
+_The project is from the Udemy course (https://www.udemy.com/course/javascript-moderno-guia-definitiva-construye-10-proyectos/)_
 
 * **Juan Pablo** - *Initial Work* (https://www.udemy.com/user/juanpablodelatorrevaldez/)
 
