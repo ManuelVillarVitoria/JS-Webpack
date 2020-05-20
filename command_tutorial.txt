@@ -1,0 +1,348 @@
+1. INSTALAR NODE.JS Y NPM EN UBUNTU
+   ____________________________________
+
+1.- Usando el administrador paquetes 'apt'(la más sencilla)
+
+*******************************************************
+   sudo apt update
+   sudo apt install nodejs
+   sudo apt install npm
+   nodejs -v // Vemos la versión que hemos instalado.
+********************************************************
+
+2.- Usando PPA (obtienes versiones más modernas)
+    cd ~
+    curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+    nano nodesource_setup.sh
+    sudo bash nodesource_setup.sh
+    sudo apt install nodejs
+    nodejs -v // Vemos la versión que hemos instalado.
+    npm -v // Output: ĺa versión instalada
+    sudo apt install build-essential
+
+3.- Con NVM
+    Para descargar la secuencia de comandos de instalación de nvm de la página de GitHub 
+    del proyecto, puede utilizar curl: https://github.com/nvm-sh/nvm
+
+
+2. CREAR EL ARCHIVO DE DEPENDENCIAS package.json
+   _______________________________________________
+
+Entramos a la carpeta del proyecto y hacemos los siguiente en la terminal 
+para crear un archivo package.json:
+
+Tecleamos este comando
+*************
+npm init
+*************
+
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (js-webpack) 
+version: (1.0.0) 
+
+//Describimos el archivo
+description: File to learn Webpack
+
+entry point: (index.js) 
+test command: 
+git repository: 
+keywords: 
+
+//Ponemos el nombre
+author: Manuel Villar
+
+license: (ISC) 
+About to write to /home/manu/JS-Projects/JS-Webpack/package.json:
+
+{
+  "name": "js-webpack",
+  "version": "1.0.0",
+  "description": "File to learn Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel Villar",
+  "license": "ISC"
+}
+
+//Ponemos yes
+Is this OK? (yes) yes
+
+
+3. INSTALAR LAS DEPENDENCIAS DE WEBPACK
+   ______________________________________
+
+Sino funciona, poner 'sudo' delante y nos pedirá las contraseñas
+*******************************
+npm install webpack --save-dev
+*******************************
+
+Instalar la segunda dependencia (command line interface)
+****************************************
+sudo npm install --save-dev webpack-cli
+****************************************
+
+En el package.json se nos ha añadido el siguiente archivo:
+"webpack-cli": "^3.3.11"
+
+Luego damos al siguiente comando para instalar o actualizar todas las dependencias 
+disponibles en el package.json
+**************
+npm install
+***************
+
+4. CREAR UN BUNDLE
+   ________________
+
+Creamos una carpeta src y dentro creamos 1 archivo index.js. 
+Fuera de src creamos un archivo index.html, donde llamaremos el archivo main.js
+ya que index.js se llama a través del bundle.
+Ejecutamos este código para crear el archivo main.js que está dentro de la carpear 'dist'
+****************************************
+ node_modules/.bin/webpack src/index.js
+***************************************
+
+
+5. CREAR EL ARCHIVO DE CONFIGURACIÓN WEBPACK
+   _____________________________________________
+
+Creamos el archivo webpack.config.js y escribimos el código donde renombraremos el 
+archivo main.js en bundle.js o como queramos.
+Borrramos la carpeta 'dist' y corremos el siguiente código:
+****************************
+ node_modules/.bin/webpack 
+****************************
+//Para ejecutar webpack de forma más simple, cambiamos el script de package.json:
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+Por el siguiente:
+
+"scripts": {
+    "build": "webpack --mode development" // Ponemos el nombre que queramos.
+  },
+
+Luego para correr webpack escribimos lo siguiente: 
+********************
+npm run build
+*******************
+
+6. TRANSPILAR EL CÓDIGO CON BABEL
+   ______________________________
+
+Instalar las dependencias de Babel
+**********************************************************************************************
+npm install --save-dev @babel/cli @babel/core @babel/preset-env @babel/register babel-loader
+**********************************************************************************************
+- Creamos un archivo .babelrc que es un json y escribimos el siguiente código:
+{
+    "presets" : ["@babel/preset-env"]
+}
+
+- Añadimos el siguiente módulo al archivo webpack.config.js
+
+module: {
+        rules: [
+            {
+                test : /\.js$/, // Una regla que dice que detecte todos los archivos .js
+                exclude : /node_modules/, // Excepto este carpeta, que no la necesitamos.
+                use : {
+                    loader : 'babel-loader'
+                }
+                
+            }
+        ]
+    }
+
+
+- Modificamos el script de package.json:
+
+"scripts": {
+    "build": "webpack --mode development", // en modo production no se genera el 'common.bundle.js'
+    "watch": "webpack --w --mode development"
+  },
+
+- El modo 'watch' va estar detectando todos los cambios de código que hagamos en el index.js
+y lo va ir transpilando en el bundle y se orbservará en la consola.
+De este modo no hay que ejecutar en cada rato, cada vez que modifiquemos el código,
+para ver los cambios en el navegador.
+*************
+npm run watch
+**************
+-Con el Ctrl+C salimos del modo watch
+
+
+7. IMPORTAR CSS CON JAVASCRIPT CON WEBPACK
+   _________________________________________
+
+- Esto con módulos nativos de JS no se puede hacer
+Instalar las dependencias de css 
+****************************************************
+sudo npm install --save-dev style-loader css-loader
+**************************************************** 
+- Añadimos una regla para css en el módulo del archivo webpack.config.js
+- Creamos un archivo css y lo importamos a index.js:
+import '../css/style.css';
+
+-hacemos correr el cambio con:
+*************
+npm run build
+**************
+
+
+8. IMPORTAR SCSS CON JAVASCRIPT CON WEBPACK
+   _________________________________________
+
+Instalar las dependencias de Sass.
+****************************************************
+sudo npm install --save-dev sass-loader 
+sudo npm install --save-dev node-sass
+**************************************************** 
+Instalamos esto de modo global
+***************************************************
+sudo npm install -g --unsafe-perm node-sass --save
+*****************************************************
+- Añadimos una regla para scss en el módulo del archivo webpack.config.js
+- Creamos un archivo scss y lo importamos a index.js:
+import '../scss/style.css';
+
+Hacemos correr el cambio con:
+*************
+npm run build
+*************
+
+9. CREAR MÚLTIPLES BUNDLES CON WEBPACK
+   ____________________________________
+
+-Creamos el archivo nostros.js y nosotros.html.
+Cambiamos el ćodigo del módulo de webpack.config.js:
+
+ entry : './src/js/index.js', 
+
+ Por el siguiente:
+
+entry : {
+        index : './src/js/index.js', 
+        nosotros: './src/js/nosotros.js', 
+    }
+
+Y en output, cambiamos este código:
+
+filename : 'bundle.js',
+
+ Por el siguiente:
+
+filename : '[name].bundle.js',
+
+
+10. AGREGAR COMMON CHUNKS
+   _______________________
+
+- Esto sirve par agregar un archivo de código común. Si instalasemos las dependencias de React
+éste código se instalaría directamente en el archivo 'common'
+- Webpack automaticamente pone en el archivo 'common' todo el código que sea igual de los 
+diferentes archivos del proyecto.
+
+-Agregamos el siguiente ćodigo a webpack.config.js:
+
+optimization : {
+        splitChunks :  {
+            cacheGroups : {
+                commons : {
+                    test : /[\\/]node_modules[\\/]/,
+                    name : 'common',
+                    chunks : 'all'
+                }
+            }
+        }
+    }
+}
+
+Hacemos correr el cambio con:
+*************
+npm run build
+*************
+
+
+11. INSTALANDO EL SERVIDOR DE WEBPACK
+   ___________________________________
+
+***********************************************
+npm install --save-dev webpack-dev-server
+***********************************************
+
+-Agregamos el siguiente ćodigo a webpack.config.js:
+
+devServer : {
+        contentBase : path.join(__dirname, '/dist'),
+        compress : true,
+        port : 9000 // el número puede ser el que queramos.
+    }
+
+-Agregamos el siguiente script al package.json:
+
+"dev": "webpack-dev-server --mode development --open"
+
+-Colocamos los archivos html dentro de la carpeta 'dist'
+
+Hacemos correr el cambio con:
+*************
+npm run build
+*************
+
+Hacemos correr el servidor:
+*************
+npm run dev
+*************
+-Con el Ctrl+C salimos del server.
+
+
+12. CREAR LOS ARCHIVOS HTML CON WEBPACK
+   ______________________________________
+
+***********************************************
+npm install --save-dev html-webpack-plugin
+***********************************************
+-Agregamos el siguiente ćodigo a webpack.config.js:
+
+const htmlWebpackPlugin = require('html-webpack-plugin');
+
+plugins : [
+        new htmlWebpackPlugin({
+            filename : 'index.html',
+            template : './src/index.html',
+            title : 'Index'
+            }),
+        new htmlWebpackPlugin({
+            filename : 'nosotros.html',
+            template : './src/nosotros.html',
+            title : 'Nosotros'
+            })
+     ]
+
+-Creamos las plantillas del HTML en la carpeta src y en la etiqueta title ponemos:
+
+<%= htmlWebpackPlugin.options.title %>
+
+-Y al ejecutar npm run build, se crean dentro de la carpeta 'dist' los archivos html con el title
+formateado y con los enlaces de javascript puestos automaticamente.
+Cualquier cambio que hagamos en las plantillas de los html de la carpeta 'src' se harán también en 
+los html de la carpeta 'dist' al dar npm run build
+
+-Hay que colocar este código en el archivo webpack.config.js:
+
+devtool: 'inline-source-map',
+
+Sino no funcionarán los formateos del title y dará errores en el servidor

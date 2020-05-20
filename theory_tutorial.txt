@@ -1,0 +1,54 @@
+1.- QUE ES Y VENTAJAS DE USAR WEBPACK
+   ___________________________________
+
+- Webpack es un empaquetador de módulos(un bundler en la jerga habitual) pero que hace muchísimas cosas más:
+Gestión de dependencias, Ejecución de tareas, Conversión de formatos, Servidor de desarrollo, Carga y uso de 
+módulos de todo tipo (AMD, CommonJS o ES2015). 
+
+- Es una herramienta de compilación (una build tool en la jerga) que coloca en un grafo de dependencias a todos 
+los elementos que forman parte de tu proyecto de desarrollo: código JavaScript, HTML, CSS, plantillas, imágenes, fuentes... 
+
+-Webpack se puede considerar como un Task Runner muy especializado en el procesamiento de unos archivos de entrada para 
+convertirlos en otros archivos de salida, para lo cual utiliza unos componentes que se denominan loaders.
+
+-Lo habitual es utilizar un archivo de código especial llamado webpack.config.js que está en la raíz de tu proyecto de 
+desarrollo y que define mediante código JavaScript las operaciones que quieres realizar.
+
+* Las venjajas son:
+  __________________
+
+1.- Eliminación de recursos no utilizados: permite de manera sencilla obtener para producción únicamente aquellos recursos 
+que son necesarios, dejando de lado los que no se utilizan.
+
+2.- Control absoluto sobre cómo procesas los recursos.
+
+3.- Utilizar cualquier tipo de sistema de modularización para JavaScript, sea AMD, CommonJS, ES2015 o Angular, sin 
+    preocuparte de que el navegador tenga que soportarlo
+
+4.- Tienes casi cualquier cosa que puedas necesitar sin recurrir a otras herramientas, por lo que no necesitarás un 
+     task runner como Gulp o un gestor de dependencias como Bower.
+
+5.- Es muy rápido.
+
+6.- Despliegues confiables: utilizando correctamente los conceptos de Webpack no puede darse el caso de que te dejes 
+    cosas fuera a la hora de desplegar.
+
+7.- Ganarás mucha velocidad de desarrollo.
+
+
+
+2.- QUE ES Y VENTAJAS DE USAR NPM
+   _______________________________
+
+- NPM es un gestor de paquetes para Javascript como Yarn. Es decir,sirve para instalar y gestionar  
+versiones de paquetes y librerías js. 
+
+* Las venjajas son:
+  __________________
+
+1.- Que versiones y que dependencias tiene este proyecto
+
+2.- No es necesario compartir toda la carpeta con tu equipo de trabajo ,solo con el archivo package.json es suficiente. 
+    Ellos luego le dan npm install y se instalan o actualizan todas las dependencias.
+
+3.- Todo el equipo de trabajo trabaja con las mismas versiones evitando problemas de compatibilidad.
