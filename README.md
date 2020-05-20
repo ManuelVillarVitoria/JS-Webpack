@@ -20,10 +20,9 @@ _8.-Adding webpack-dev-server to the project._
 
 _9.-Webpack to create the HTML._
 
-
+ <br />
 
 _- Dynamic JS Code with modules through Webpack._
-
 
 
 ## Settings 🔧
@@ -31,12 +30,12 @@ _- Dynamic JS Code with modules through Webpack._
 _Installating **Node.js** with NPM (https://nodejs.org/es/)._
 
 
-_You must use this scripts to create the dependecies:_
+_- You must use this script to create the file of dependecies:_
 
 * **npm init**  _(To create a package.json file.)_
 
 
-_You must use this scripts to create the dependecies:_
+_- You must use this scripts to install the dependecies:_
 
 * **npm install --save-dev**  _(To create a webpack dependency.)_
 
@@ -63,7 +62,7 @@ In Linux it is necessary to sometimes putting the term **sudo** in front to  the
 and thus be able to install the dependencies.
 
 
-_You must use this scripts to run the project:._
+_- You must use this scripts to run the project:._
 
 * **npm install**  _(To install the dependencies that have been created in the package.json file.)_
 
