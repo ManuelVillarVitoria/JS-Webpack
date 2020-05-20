@@ -76,13 +76,13 @@ _You must use this scripts to run the project:._
 
 _The tools used to create the project have been the following:_
 
-* **`Node.js`**
-* **`NPM`** - Node Package Manager
-* **`Webpack`** - Bundler & Build tool & Task runner
-* **`Babel`**- Code Compiler
-* **`Javascript`**
-* **`Sass`** - CSS Preprocessor
-* **`HTML5`**
+* ### `Node.js`
+* ### `NPM` 
+* ### `Webpack`
+* ### `Babel`
+* ### `Javascript`
+* ### `Sass`
+* ### `HTML5`
 
 ## Authors ✒️
 
